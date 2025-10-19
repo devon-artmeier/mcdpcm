@@ -53,22 +53,22 @@ int ConvertWavFile(const char *in_filename, const char *out_filename)
 		goto cleanup;
 	}
 
-	fread(id, 1, 4, in_fp);
-	if (strcmp(id, "RIFF") != 0) {
+	bytes_read = fread(id, 1, 4, in_fp);
+	if (bytes_read == 4 && strcmp(id, "RIFF") != 0) {
 		printf("Error: \"%s\" is not a valid WAV file.\n", in_filename);
 		goto cleanup;
 	}
 	fseek(in_fp, 4, SEEK_CUR);
 
-	fread(id, 1, 4, in_fp);
-	if (strcmp(id, "WAVE") != 0) {
+	bytes_read = fread(id, 1, 4, in_fp);
+	if (bytes_read == 4 && strcmp(id, "WAVE") != 0) {
 		printf("Error: \"%s\" is not a valid WAV file.\n", in_filename);
 		goto cleanup;
 	}
 
 	while (1) {
-		fread(id, 1, 4, in_fp);
-		if (ferror(in_fp)) {
+		bytes_read = fread(id, 1, 4, in_fp);
+		if (bytes_read != 4 || ferror(in_fp)) {
 			printf("Error: Failed to read chunk ID from \"%s\".\n", in_filename);
 			goto cleanup;
 		}

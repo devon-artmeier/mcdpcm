@@ -1,5 +1,7 @@
 # Sega Mega CD PCM Converter
 
+[![Build Status](https://github.com/devon-artmeier/mcdpcm/actions/workflows/cmake-multi-platform.yml/badge.svg)](https://github.com/devon-artmeier/mcdpcm/actions/workflows/cmake-multi-platform.yml)
+
 This is a tool to convert 8-bit mono WAV files into Sega Mega CD PCM sample files.
 
 ## Usage

@@ -26,12 +26,16 @@
  */
 short ReadShort(FILE* fp)
 {
-	unsigned char read[2] = { 0, 0 };
+	unsigned char buffer[2] = { 0, 0 };
+	size_t read = 0;
 
 	assert(fp);
-	fread(read, 1, 2, fp);
+	read = fread(buffer, 1, 2, fp);
 
-	return (read[0]) | (read[1] << 8);
+	if (read == 0) {
+		return 0;
+	}
+	return (buffer[0]) | (buffer[1] << 8);
 }
 
 /*
@@ -44,12 +48,16 @@ short ReadShort(FILE* fp)
  */
 long ReadLong(FILE* fp)
 {
-	unsigned char read[4] = { 0, 0, 0, 0 };
+	unsigned char buffer[4] = { 0, 0, 0, 0 };
+	size_t read = 0;
 
 	assert(fp);
-	fread(read, 1, 4, fp);
+	read = fread(buffer, 1, 4, fp);
 
-	return (read[0]) | (read[1] << 8) | (read[2] << 16) | (read[3] << 24);
+	if (read == 0) {
+		return 0;
+	}
+	return (buffer[0]) | (buffer[1] << 8) | (buffer[2] << 16) | (buffer[3] << 24);
 }
 
 /*
