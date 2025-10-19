@@ -68,7 +68,7 @@ int ConvertWavFile(const char *in_filename, const char *out_filename)
 
 	while (1) {
 		bytes_read = fread(id, 1, 4, in_fp);
-		if (bytes_read != 4 || ferror(in_fp)) {
+		if (ferror(in_fp)) {
 			printf("Error: Failed to read chunk ID from \"%s\".\n", in_filename);
 			goto cleanup;
 		}
