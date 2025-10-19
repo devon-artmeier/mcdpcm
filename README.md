@@ -1,6 +1,6 @@
 # Sega Mega CD PCM Converter
 
-This is a tool to 
+This is a tool to convert 8-bit mono WAV files into Sega Mega CD PCM sample files.
 
 ## Usage
 
